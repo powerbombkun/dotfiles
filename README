@@ -1,0 +1,7 @@
+= How to use.
+
+Please execute below commands.
+
+  $ git clone http://github.com/yuroyoro/dotfiles.git
+  $ cd dotfiles
+  $ sh ./setup.sh
