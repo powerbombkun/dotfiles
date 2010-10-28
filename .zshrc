@@ -1,5 +1,5 @@
 # users generic .zshrc file for zsh(1)
-# last update 2010-10-21 01:08:30
+# last update 2010-10-28 16:38:17
 
 ## Environment variable configuration
 ## Default shell configuration
@@ -263,6 +263,21 @@ function extract() {
     esac
 }
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+# Gitのリポジトリのトップレベルにcdするコマンド
+# http://d.hatena.ne.jp/hitode909/20100211/1265879271
+function u()
+{
+    cd ./$(git rev-parse --show-cdup)
+    if [ $# = 1 ]; then
+        cd $1
+    fi
+}
+
+# mkcd
+function mkcd() {
+    [ $# = 1 ] && mkdir "$1" && cd "$1"
+}
 
 # 補完機能の設定
 setopt no_beep
