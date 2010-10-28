@@ -1,0 +1,102 @@
+" vimperator2.2
+"
+" windowsの場合には環境変数$HOMEを設定し、
+" このファイルを_vimperatorという名前で$HOMEディレクトリに保存してください
+" pluginは$HOME/vimperator/plugin/以下に配置
+"
+" linux は環境変数$HOMEの設定は不要で、
+" このファイルを.vimperatorと言う名前$HOMEディレクトリに保存
+" pluginは$HOME/.vimperator/plugin/以下に配置
+"
+
+" ブラウザタイトルの変更
+set titlestring="Mozilla Firefox"
+
+" Beep設定
+set visualbell
+
+" mappings
+" ======================================================================
+"j/kの移動量を5倍に
+noremap j 5<C-e>
+noremap k 5<C-y>
+
+"h/lで戻る/進む
+noremap h <A-Left>
+noremap l <A-Right>
+
+" 補完リストの選択をC-n,C-pで
+cmap <C-n> <TAB>
+cmap <C-p> <S-TAB>
+
+" 凄いらしい
+set wildoptions=auto
+set complete=sl
+
+" twitterとか開いたときにinput要素にfocusを奪われないようにする
+"set focuscontent
+
+"
+" bmark
+map x :bmarks!<Space>-tags<Space>
+map ,x :bmark<Space>-tags<Space>
+
+" メニューバーを表示
+set guioptions=m
+
+" 入力欄への自動フォーカスを防ぐ
+set focuscontent
+
+"
+" google検索
+map s :tabopen<Space>google<Space>
+
+" direct_bookmark
+let g:direct_sbm_use_services_by_tag = "h"
+let g:direct_sbm_use_services_by_post = "h"
+map ,z :sbm<Space>[
+
+" hatena_bookmark-search.js
+"autocmd VimperatorEnter .* :set complete+=H
+map z :bsearch<Space>[
+
+"
+"コピー
+cmap <C-c> <C-Insert>
+imap <C-c> <C-Insert>
+"
+"ペースト
+cmap <C-v> <S-Insert>
+imap <C-v> <S-Insert>
+
+"
+" hatena
+map ,d :t http://d.hatena.ne.jp/powerbombkun/<Enter>
+map ,b :t http://b.hatena.ne.jp/powerbombkun/<Enter>
+
+"
+" google
+map ,g :t http://www.google.com/calendar/render<Enter>
+map ,r :t http://www.google.co.jp/reader/view<Enter>
+map ,m :t https://mail.google.com/mail/#inbox<Enter>
+"
+" ime(http://retlet.net/log/firefox/vimperator/)
+" linuxはサポート外
+let g:ex_ime_mode = "inactive"
+let g:textarea_ime_mode = "inactive"
+
+"
+" autopagerize-controller
+let g:autopagerize_prevmap = "J"
+let g:autopagerize_nextmap = "K"
+
+"
+" asdfghjkl.js
+let g:asdfghjkl_default = "true"
+
+"
+" google reader key customize
+autocmd LocationChange .* js modes.passAllKeys = false
+autocmd LocationChange www\\.google\\.(co\\.jp|com)/reader js modes.passAllKeys = true
+
+
