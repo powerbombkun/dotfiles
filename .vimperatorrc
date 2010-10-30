@@ -51,11 +51,6 @@ set focuscontent
 " google検索
 map s :tabopen<Space>google<Space>
 
-" direct_bookmark
-let g:direct_sbm_use_services_by_tag = "h"
-let g:direct_sbm_use_services_by_post = "h"
-map ,z :sbm<Space>[
-
 " hatena_bookmark-search.js
 "autocmd VimperatorEnter .* :set complete+=H
 map z :bsearch<Space>[
