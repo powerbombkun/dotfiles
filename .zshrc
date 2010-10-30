@@ -1,5 +1,5 @@
 # users generic .zshrc file for zsh(1)
-# last update 2010-10-28 16:38:17
+# last update 2010-10-30 20:12:56
 
 ## Environment variable configuration
 ## Default shell configuration
@@ -128,7 +128,7 @@ case "${OSTYPE}" in
         alias ls="ls --color"
         ;;
     cygwin*)
-        alias ls="ls --color=auto"
+        alias ls="ls --color"
         ;;
 esac
 
