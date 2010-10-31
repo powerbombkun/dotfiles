@@ -94,4 +94,3 @@ let g:asdfghjkl_default = "true"
 autocmd LocationChange .* js modes.passAllKeys = false
 autocmd LocationChange www\\.google\\.(co\\.jp|com)/reader js modes.passAllKeys = true
 
-
