@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-11-03 15:13:05
+;; last update 2010-11-03 21:23:08
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ and source-file directory for your debugger." t)
          anything-c-source-gtags-select
 ;;         anything-c-source-locate
 ;;         anything-c-source-bookmarks
-         anything-c-source-emacs-commands
+;;         anything-c-source-emacs-commands
 ;;         anything-c-source-complete-shell-history
 ;;         anything-c-source-complex-command-history
          ))
