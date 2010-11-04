@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-11-04 22:36:54
+;; last update 2010-11-04 22:39:44
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -725,6 +725,7 @@ and source-file directory for your debugger." t)
 
 (require 'anything-complete)
 (require 'shell-command)
+(shell-command-completion-mode)
 (add-hook 'shell-mode-hook
           (lambda()
             (define-key shell-mode-map (kbd "C-o") 'anything-complete-shell-history)))
