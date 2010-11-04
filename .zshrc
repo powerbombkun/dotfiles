@@ -1,5 +1,5 @@
 # users generic .zshrc file for zsh(1)
-# last update 2010-10-30 20:12:56
+# last update 2010-11-04 22:24:05
 
 ## Environment variable configuration
 ## Default shell configuration
@@ -66,10 +66,6 @@ setopt noautoremoveslash
 setopt nolistbeep
 
 #
-# shere history
-#
-setopt share_history
-#
 # other options
 #
 setopt BASH_AUTO_LIST
@@ -98,9 +94,14 @@ bindkey "\\en" history-beginning-search-forward-end
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
-setopt hist_ignore_all_dups #ignore duplication command history list
-setopt hist_reduce_blanks
-setopt share_history #share command history data
+setopt hist_ignore_all_dups  # 重複するコマンド行は古い方を削除
+setopt hist_ignore_dups      # 直前と同じコマンドラインはヒストリに追加しない
+setopt share_history         # コマンド履歴ファイルを共有する
+setopt append_history        # 履歴を追加 (毎回 .zsh_history を作るのではなく)
+setopt inc_append_history    # 履歴をインクリメンタルに追加
+setopt hist_no_store         # historyコマンドは履歴に登録しない
+setopt hist_reduce_blanks    # 余分な空白は詰めて記録
+#setopt hist_ignore_space    # 先頭がスペースの場合、ヒストリに追加しない
 
 ## Completion configuration
 #

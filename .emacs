@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-11-03 21:23:08
+;; last update 2010-11-04 22:36:54
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -723,26 +723,11 @@ and source-file directory for your debugger." t)
 ;;         anything-c-source-complex-command-history
          ))
 
-;;-------------------------------------------------------------------
-;; http://d.hatena.ne.jp/kitokitoki/20100925/p1
-;;-------------------------------------------------------------------
-(defvar anything-c-source-shell-history
-  `((name . ".zsh_history")
-    (init . (lambda ()
-              (with-current-buffer (anything-candidate-buffer 'global)
-                (insert-file-contents "~/.zsh_history"))))
-    (candidates-in-buffer)
-    (candidate-number-limit . 99999)
-    (action ("Insert" . insert))))
-
-(defun anything-shell-history ()
-  (interactive)
-  (anything 'anything-c-source-shell-history))
-
+(require 'anything-complete)
+(require 'shell-command)
 (add-hook 'shell-mode-hook
-  (lambda()
-    (define-key shell-mode-map (kbd "C-o") 'anything-shell-history)))
-
+          (lambda()
+            (define-key shell-mode-map (kbd "C-o") 'anything-complete-shell-history)))
 ;;-------------------------------------------------------------------
 ;;  hatena-bookmark
 ;;-------------------------------------------------------------------
