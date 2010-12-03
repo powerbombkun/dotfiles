@@ -1,5 +1,5 @@
 # users generic .zshrc file for zsh(1)
-# last update 2010-11-04 22:24:05
+# last update 2010-11-22 23:15:45
 
 ## Environment variable configuration
 ## Default shell configuration
@@ -211,22 +211,22 @@ function google() {
 
 
 # ^でcd .. コマンド発行(^を入力したい場合はCtrl-Vしてから入力)
-function cdup() {
-    echo
-    cd ..
-    zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup
+# function cdup() {
+#     echo
+#     cd ..
+#     zle reset-prompt
+# }
+# zle -N cdup
+# bindkey '\^' cdup
 
 # \でcd - コマンド発行(\を入力したい場合はCtrl-Vしてから入力)
-function cdrev() {
-    echo
-    cd -
-    zle reset-prompt
-}
-zle -N cdrev
-bindkey '\\' cdrev
+# function cdrev() {
+#     echo
+#     cd -
+#     zle reset-prompt
+# }
+# zle -N cdrev
+# bindkey '\\' cdrev
 
 # cdした際にlsコマンド発行
 # case "${OSTYPE}" in

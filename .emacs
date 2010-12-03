@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-11-04 22:39:44
+;; last update 2010-12-03 21:42:58
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -125,6 +125,8 @@
 ;;; beep
 ;;------------------------------------------------------------------------------
 (setq ring-bell-function 'ignore)
+
+
 ;;------------------------------------------------------------------------------
 ;; color-theme
 ;; refe : http://www.cs.cmu.edu/~maverick/GNUEmacsColorThemeTest/index-el.html
@@ -1379,3 +1381,6 @@ nil ))
     (define-key ruby-mode-map (kbd "C-c C-r") 'my-ruby-eval-region)
     ))
 
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
