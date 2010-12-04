@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-12-03 21:42:58
+;; last update 2010-12-04 23:14:59
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -58,13 +58,13 @@
           (concat '"/usr/local/bin:" (getenv "PATH"))))
 ;;------------------------------------------------------------------------------
 ;; elisp load-path
+;; .emacs.d/elisp以下のディレクトリを全てロードパスに追加
 ;;------------------------------------------------------------------------------
-(setq load-path (append '("~/.emacs.d/elisp"
-                          "~/.emacs.d/elisp/anthy"
-                          "~/.emacs.d/elisp/themes"
-                          "~/.emacs.d/elisp/config"
-                          "~/.emacs.d/elisp/org")
-                        load-path))
+(let ((default-directory (expand-file-name "~/.emacs.d/elisp")))
+  (add-to-list 'load-path default-directory)
+  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+      (normal-top-level-add-subdirs-to-load-path)))
+
 ;;------------------------------------------------------------------------------
 ;; auto-mode-alist
 ;;------------------------------------------------------------------------------
@@ -1202,7 +1202,6 @@ and source-file directory for your debugger." t)
 (define-key calendar-mode-map "n" 'calendar-forward-day)
 (define-key calendar-mode-map "b" 'calendar-backward-day)
 (setq mark-holidays-in-calendar t)
-;; (install-elisp "http://www.meadowy.org/meadow/netinstall/export/799/branches/3.00/pkginfo/japanese-holidays/japanese-holidays.el")
 (require 'japanese-holidays)
 (setq calendar-holidays
       (append japanese-holidays local-holidays other-holidays))
