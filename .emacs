@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-12-04 23:14:59
+;; last update 2010-12-05 22:57:23
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -659,6 +659,38 @@ and source-file directory for your debugger." t)
 (setq ac-candidate-menu-width 60)
 (define-key ac-complete-mode-map "\C-n" 'ac-next)
 (define-key ac-complete-mode-map "\C-p" 'ac-previous)
+
+;;------------------------------------------------------------------------------
+;; lookコマンドでの英単語補完
+;;-----------------------------------------------------------------------------
+(defun my-ac-look ()
+  "look コマンドの出力をリストで返す"
+  (interactive)
+  (unless (executable-find "look")
+    (error "look コマンドがありません"))
+  (let ((search-word (thing-at-point 'word)))
+    (with-temp-buffer
+      (call-process-shell-command "look" nil t 0 search-word)
+      (split-string-and-unquote (buffer-string) "\n"))))
+
+(defun ac-complete-look ()
+  (interactive)
+  (let ((ac-menu-height 50)
+        (ac-candidate-limit t))
+    (auto-complete '(ac-source-look))))
+
+;; 表示数制限を変更しない場合
+;;(defun ac-complete-look ()
+;;  (interactive)
+;;  (auto-complete '(ac-source-look)))
+
+(defvar ac-source-look
+  '((candidates . my-ac-look)
+    (requires . 2)))  ;; 2文字以上ある場合にのみ対応させる
+
+;; キーは好きなのを割り当てて下さい
+(global-set-key (kbd "M-h") 'ac-complete-look)
+
 ;;------------------------------------------------------------------------------
 ;; ac-anything
 ;; http://d.hatena.ne.jp/rubikitch/20090210/auto_complete_anything
@@ -1383,3 +1415,6 @@ nil ))
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+
+
