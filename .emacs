@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-12-05 22:57:23
+;; last update 2010-12-18 23:04:08
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -73,6 +73,7 @@
                 ("\\.yml$"  . yaml-mode)
                 ("\\.asm$"  . asm-mode)
                 ("\\.css$"  . css-mode)
+                ("\\.cs$"   . csharp-mode)
                 ("\\.mk$"   . makefile-mode)
                 ("Makefile" . makefile-mode)
                 ("makefile" . makefile-mode)
@@ -651,6 +652,7 @@ and source-file directory for your debugger." t)
              (add-to-list 'ac-modes 'yaml-mode)
              (add-to-list 'ac-modes 'html-mode)
              (add-to-list 'ac-modes 'css-mode)
+             (add-to-list 'ac-modes 'csharp-mode)
              (add-to-list 'ac-modes 'objc-mode)
              (add-to-list 'ac-modes 'makefile-mode)
              (add-to-list 'ac-modes 'asm-mode)))
@@ -1418,3 +1420,19 @@ nil ))
 
 
 
+;;------------------------------------------------------------------------------
+;; C#モード
+;;------------------------------------------------------------------------------
+(require 'csharp-mode)
+;;(require 'compile)
+(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): error" 1 2 3 2) compilation-error-regexp-alist)
+(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): warning" 1 2 3 1) compilation-error-regexp-alist)
+
+;; Patterns for defining blocks to hide/show:
+(push '(csharp-mode
+        "\\(^\\s *#\\s *region\\b\\)\\|{"
+        "\\(^\\s *#\\s *endregion\\b\\)\\|}"
+        "/[*/]"
+        nil
+        hs-c-like-adjust-block-beginning)
+        hs-special-modes-alist)
