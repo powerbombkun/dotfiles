@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-12-19 11:30:57
+;; last update 2010-12-19 11:33:36
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -1417,3 +1417,15 @@ nil ))
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+;;------------------------------------------------------------------------------
+;; flymake
+;; http://d.hatena.ne.jp/pyopyopyo/searchdiary?word=.emacs
+;;------------------------------------------------------------------------------
+(require 'flymake)
+(defun flymake-get-make-cmdline (source base-dir)
+  (list "make"
+        (list "-s" "-C"
+              base-dir
+              (concat "CHK_SOURCES=" source)
+              "SYNTAX_CHECK_MODE=1")))
