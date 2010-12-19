@@ -1,7 +1,7 @@
 ;; -*- mode: emacs-lisp ; Coding: utf-8 -*-
 ;;
 ;; author powerbombkun
-;; last update 2010-12-18 23:04:08
+;; last update 2010-12-19 11:30:57
 ;;-----------------------------------------------------------------------------
 ;; OS を判別
 ;;------------------------------------------------------------------------------
@@ -1417,22 +1417,3 @@ nil ))
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
-
-
-
-;;------------------------------------------------------------------------------
-;; C#モード
-;;------------------------------------------------------------------------------
-(require 'csharp-mode)
-;;(require 'compile)
-(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): error" 1 2 3 2) compilation-error-regexp-alist)
-(push '("^\\(.*\\)(\\([0-9]+\\),\\([0-9]+\\)): warning" 1 2 3 1) compilation-error-regexp-alist)
-
-;; Patterns for defining blocks to hide/show:
-(push '(csharp-mode
-        "\\(^\\s *#\\s *region\\b\\)\\|{"
-        "\\(^\\s *#\\s *endregion\\b\\)\\|}"
-        "/[*/]"
-        nil
-        hs-c-like-adjust-block-beginning)
-        hs-special-modes-alist)
